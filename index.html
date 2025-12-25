@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance Happy New Year 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Monoton&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #000 url('https://img.freepik.com/free-vector/fireworks-background-video-conferencing_23-2149182967.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Blur Overlay */
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 1;
+        }
+
+        .main-container {
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        /* Sender Name Styling */
+        .sender-box {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.5rem;
+            color: #00fbff;
+            text-shadow: 0 0 10px #00fbff, 0 0 20px #00fbff;
+            margin-bottom: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .wish-msg { color: #fff; font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 20px; }
+
+        .center-img {
+            width: 100%;
+            border-radius: 20px;
+            border: 3px solid #ff0077;
+            box-shadow: 0 0 20px #ff0077;
+            margin-bottom: 20px;
+        }
+
+        /* Special New Year Font */
+        .ny-title {
+            font-family: 'Monoton', cursive;
+            font-size: 2.8rem;
+            color: #fff;
+            text-shadow: 0 0 10px #ff0077, 0 0 20px #ff0077, 0 0 40px #ff0077;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .glowing-sub {
+            font-size: 1.3rem;
+            color: #FFD700;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-shadow: 0 0 5px #FFD700;
+        }
+
+        /* Countdown Box */
+        #timer {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .t-unit { color: #fff; }
+        .t-num { display: block; font-size: 1.8rem; font-weight: bold; color: #00fbff; }
+        .t-lab { font-size: 0.7rem; opacity: 0.8; }
+
+        /* Share Area */
+        .share-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            margin-top: 30px;
+        }
+<script async="async" data-cfasync="false" src="https://pl28334568.effectivegatecpm.com/cc8d4571cdc05281b621fdf9a678de02/invoke.js"></script>
+<div id="container-cc8d4571cdc05281b621fdf9a678de02"></div>
+
+        #nameInp {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .wa-btn {
+            background: #25D366;
+            color: #fff;
+            text-decoration: none;
+            padding: 15px;
+            display: block;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(37,211,102,0.4);
+        }
+
+        canvas { position: fixed; top: 0; left: 0; z-index: 2; pointer-events: none; }
+    </style>
+</head>
+<body>
+
+<div class="overlay"></div>
+<canvas id="canvas"></canvas>
+
+<div class="main-container">
+    <div class="sender-box" id="display-name">Someone Special</div>
+    <div class="wish-msg">Ki taraf se aapko...</div>
+
+    <img src="https://share.google/45fnvEZXimpcIpIbh" class="center-img" alt="Greeting">
+
+    <div class="ny-title">HAPPY NEW YEAR 2026</div>
+    <div class="glowing-sub">Starting In:</div>
+
+    <div id="timer">
+        <div class="t-unit"><span class="t-num" id="d">00</span><span class="t-lab">Days</span></div>
+        <div class="t-unit"><span class="t-num" id="h">00</span><span class="t-lab">Hours</span></div>
+        <div class="t-unit"><span class="t-num" id="m">00</span><span class="t-lab">Mins</span></div>
+        <div class="t-unit"><span class="t-num" id="s">00</span><span class="t-lab">Secs</span></div>
+    </div>
+
+    <div style="margin: 20px 0;">
+        </div>
+
+    <div class="share-card">
+        <input type="text" id="nameInp" placeholder="👉 Yahan apna naam likhein">
+        <a href="#" class="wa-btn" onclick="generateLink()">WhatsApp Par Share Karein</a>
+    </div>
+</div>
+
+<script>
+    // 1. Get Name from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const senderName = urlParams.get('n');
+    if(senderName) {
+        document.getElementById('display-name').innerText = decodeURIComponent(senderName);
+    }
+
+    // 2. Countdown Logic
+    const target = new Date("Jan 1, 2026 00:00:00").getTime();
+    setInterval(() => {
+        const now = new Date().getTime();
+        const diff = target - now;
+        document.getElementById('d').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById('h').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById('m').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById('s').innerText = Math.floor((diff % (1000 * 60)) / 1000);
+    }, 1000);
+
+    // 3. Share Function
+    function generateLink() {
+        const name = document.getElementById('nameInp').value || "Friend";
+        const baseUrl = window.location.href.split('?')[0];
+        const finalUrl = baseUrl + "?n=" + encodeURIComponent(name);
+        const text = `*${name}* ne aapke liye ek special surprise bheja hai! 🎁\nNiche blue line par click karke dekho 👇\n\n${finalUrl}`;
+        window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(text));
+    }
+
+    // 4. Firework Animation
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    let fires = [];
+
+    function Firework() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height;
+        this.tX = this.x;
+        this.tY = Math.random() * (canvas.height/2);
+        this.color = `hsl(${Math.random()*360}, 100%, 50%)`;
+        this.done = false;
+        this.update = function() {
+            this.y -= 5;
+            if(this.y <= this.tY) this.done = true;
+        }
+        this.draw = function() {
+            ctx.fillStyle = this.color;
+            ctx.beginPath(); ctx.arc(this.x, this.y, 3, 0, Math.PI*2); ctx.fill();
+        }
+    }
+
+    function loop() {
+        ctx.fillStyle = 'rgba(0,0,0,0.1)';
+        ctx.fillRect(0,0,canvas.width, canvas.height);
+        if(Math.random() < 0.05) fires.push(new Firework());
+        fires.forEach((f, i) => {
+            f.update(); f.draw();
+            if(f.done) fires.splice(i, 1);
+        });
+        requestAnimationFrame(loop);
+    }
+    loop();
+</script>
+
+</body>
+</html>
